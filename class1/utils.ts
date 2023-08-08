@@ -12,5 +12,3 @@ export function formatBytes(bytes = 0) {
     (bytes / Math.pow(KILOBYTE, sizeIndex)).toFixed(2)
   )} ${sizeSuffix}`;
 }
-
-module.exports = "hi";
