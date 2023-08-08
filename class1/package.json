@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {},
   "keywords": [],
   "author": "daguttt <dagutmu667@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "20.4.8",
     "typescript": "5.1.6"
   }
 }
