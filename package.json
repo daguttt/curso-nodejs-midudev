@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "ts-node-dev --respawn --",
-    "lint:check": "eslint .",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format:check": "prettier . -c",
     "format:run": "prettier . -w"
