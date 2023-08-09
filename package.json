@@ -4,9 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "ts-node-dev --respawn --",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format:check": "prettier . -c",
+    "format:run": "prettier . -w"
   },
   "keywords": [],
   "author": "daguttt <dagutmu667@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/eslint": "8.44.2",
+    "@types/node": "20.4.8",
+    "@typescript-eslint/eslint-plugin": "6.3.0",
+    "@typescript-eslint/parser": "6.3.0",
+    "eslint": "8.46.0",
+    "eslint-config-prettier": "9.0.0",
+    "prettier": "3.0.1",
+    "ts-node-dev": "2.0.0",
+    "typescript": "5.1.6"
+  }
 }
