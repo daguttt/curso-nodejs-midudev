@@ -1,17 +1,17 @@
-import { readdir, stat } from "node:fs/promises";
-import { join } from "node:path";
+import { readdir, stat } from 'node:fs/promises';
+import { join } from 'node:path';
 
-import { formatBytes } from "./utils.js";
+import { formatBytes } from './utils';
 
-const FOLDER_PATH = process.argv[2] ?? "./";
+const FOLDER_PATH = process.argv[2] ?? './';
 
-(async (folderPath) => {
+void (async function ls(folderPath) {
   // Get files in folder
   let files;
   try {
     files = await readdir(folderPath);
   } catch (error) {
-    console.error("Error ocuurred reading folder:", error);
+    console.error('Error ocuurred reading folder:', error);
     return process.exit(1);
   }
 
@@ -23,12 +23,15 @@ const FOLDER_PATH = process.argv[2] ?? "./";
     try {
       fileStats = await stat(filePath);
     } catch (error) {
-      console.error(`Error ocuurred reading the file ${filePath}`, error);
+      console.error(
+        `Error ocuurred reading the file ${filePath}`,
+        error
+      );
       return process.exit(1);
     }
 
     const isDirectory = fileStats.isDirectory();
-    const prefix = isDirectory ? "d" : "-";
+    const prefix = isDirectory ? 'd' : '-';
     const formattedSize = formatBytes(fileStats.size);
     const modifiedAt = fileStats.mtime;
 
@@ -42,8 +45,9 @@ const FOLDER_PATH = process.argv[2] ?? "./";
 
   const resolvedFilesStats = await Promise.all(filesStats);
 
-  const sortedModifiedDescFilesStats = resolvedFilesStats.sort((fileA, fileB) =>
-    fileA.lastModifiedAt < fileB.lastModifiedAt ? 1 : -1
+  const sortedModifiedDescFilesStats = resolvedFilesStats.sort(
+    (fileA, fileB) =>
+      fileA.lastModifiedAt < fileB.lastModifiedAt ? 1 : -1
   );
 
   const filesLogLines = sortedModifiedDescFilesStats.map(
