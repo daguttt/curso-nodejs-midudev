@@ -1,5 +1,7 @@
 import http from 'node:http';
 
+import { findAvailablePort } from './free-port';
+
 const PORT = !process.env.PORT ? 3000 : Number(process.env.PORT);
 
 const server = http.createServer((req, res) => {
@@ -10,6 +12,10 @@ const server = http.createServer((req, res) => {
   res.end();
 });
 
-server.listen(PORT, 'localhost', () => {
-  console.log(`Server listening on port: ${PORT}`);
-});
+findAvailablePort(PORT)
+  .then((port) => {
+    server.listen(port, 'localhost', () => {
+      console.log(`Server listening on http://localhost:${port}`);
+    });
+  })
+  .catch(() => console.error("Error: Couldn't start the server."));
