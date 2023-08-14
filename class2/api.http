@@ -1,0 +1,9 @@
+# Get Node.js logo image
+GET /my-png-image.png
+Host: localhost:3000
+
+###
+
+# Get root route
+GET /
+Host: localhost:3000
