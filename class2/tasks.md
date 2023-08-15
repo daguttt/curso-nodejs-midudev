@@ -1,0 +1,2 @@
+- [x] Create a server to serve an image.
+- [ ]
