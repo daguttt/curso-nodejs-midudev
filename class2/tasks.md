@@ -1,2 +1,2 @@
 - [x] Create a server to serve an image.
-- [ ]
+- [x] Create GET, POST endpoints for a resource.
